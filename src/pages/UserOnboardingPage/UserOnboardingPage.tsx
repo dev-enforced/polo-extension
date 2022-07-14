@@ -10,7 +10,11 @@ const UserOnboardingPage = () => {
   const receiveNameHandler = (
     keyEvent: React.KeyboardEvent<HTMLInputElement>
   ) => {
-    if (keyEvent.key === "Enter" && keyEvent.target.value.length > 0) {
+    if (
+      keyEvent.key === "Enter" &&
+      keyEvent.target.value.length > 0 &&
+      keyEvent.target.value.trim() !== ""
+    ) {
       const keyEventValueCapitalised = capitaliseUsername(
         keyEvent.target.value
       );
