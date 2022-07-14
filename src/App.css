@@ -9,11 +9,13 @@
 .app {
   min-height: 100vh;
   min-width: 100vw;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-@media screen and (max-width: 768px) {
-  .app {
-    min-width: fit-content;
-    min-height: auto;
+@media screen and (max-width:768px){
+  .app{
+    height: fit-content;
   }
 }
