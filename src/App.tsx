@@ -1,26 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { useBrowser } from "context";
+import { DashboardPage, UserOnboardingPage } from "pages";
+import "./App.css";
 
-function App() {
+const App = () => {
+  const { bgImageUrl, username } = useBrowser();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app" style={{ backgroundImage: `url("${bgImageUrl}")` }}>
+      {username === "" ? <UserOnboardingPage /> : <DashboardPage />}
     </div>
   );
-}
+};
 
 export default App;

@@ -1,0 +1,42 @@
+.user_onboarding_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: rgba(255, 255, 255, 1);
+  min-height: 50vh;
+  z-index: 10;
+}
+
+.user_onboarding_text {
+  font-family: "Fredoka One", cursive;
+  font-weight: 700;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.user_onboarding_input {
+  border: transparent;
+  background: transparent;
+  text-align: center;
+  font-weight: 400;
+  font-family: "Harmattan", sans-serif;
+  margin: 2rem 0;
+  padding: 0 2.5rem;
+  border-bottom: 0.15rem solid #fff;
+  color:rgba(255, 255, 255, 1);
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.user_onboarding_input:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+@media screen and (min-width: 480px) {
+  .user_onboarding_text {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+}
