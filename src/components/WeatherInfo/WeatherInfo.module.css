@@ -1,0 +1,47 @@
+.weather_info_container {
+  position: absolute;
+  top: 6px;
+  right: 2rem;
+}
+.weather_info_with_temperature_container {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.weather_temperature {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.weather_location {
+  margin: 0;
+  margin-right: 0.5rem;
+  padding: 0;
+  font-weight: 700;
+}
+
+.weather_icon {
+  color: rgba(255, 255, 255, 1);
+  width: 3.5rem;
+  block-size: auto;
+  max-inline-size: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+.weather_temperature_txt {
+  font-weight: 700;
+}
+
+@media screen and (min-width: 480px) {
+  .weather_location {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+  .weather_temperature_txt {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+}
