@@ -7,6 +7,7 @@ const WeatherInfo = () => {
   const [weatherDetails, setWeatherDetails] = useState<WeatherDetails>(
     weatherInfoInitialState
   );
+  const [weatherModalView, setWeatherModalView] = useState<boolean>(false);
   const weatherApiKey = process.env.REACT_APP_WEATHER_API_KEY;
   const weatherApiUrl = process.env.REACT_APP_WEATHER_API_URL;
   const weatherImageUrl = process.env.REACT_APP_WEATHER_IMAGE_URL;
@@ -59,28 +60,65 @@ const WeatherInfo = () => {
   const receiveGeoLocation = () => {
     navigator.geolocation.getCurrentPosition(locationCallback);
   };
-
+  const toggleModalView = () => {
+    setWeatherModalView((prev) => !prev);
+  };
   useEffect(() => {
     receiveGeoLocation();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <div className={styles.weather_info_container}>
-      <div className={styles.weather_info_with_temperature_container}>
-        <div className={styles.weather_temperature}>
-          <img
-            src={`${weatherImageUrl}/${weatherDetails.weatherIcon}@2x.png`}
-            alt="weather-logo"
-            className={styles.weather_icon}
-          />
-          <div className={styles.weather_temperature_txt}>
-            <span>{weatherDetails.temperature}</span>
-            <span>&#176;</span>
+    <>
+      <div
+        className={styles.weather_info_container}
+        onClick={() => {
+          toggleModalView();
+        }}
+      >
+        <div className={styles.weather_info_with_temperature_container}>
+          <div className={styles.weather_temperature}>
+            <img
+              src={`${weatherImageUrl}/${weatherDetails.weatherIcon}@2x.png`}
+              alt="weather-logo"
+              className={styles.weather_icon}
+            />
+            <div className={styles.weather_temperature_txt}>
+              <span>{weatherDetails.temperature}</span>
+              <span>&#176;</span>
+            </div>
           </div>
         </div>
+        <span className={styles.weather_location}>{weatherDetails.place}</span>
       </div>
-      <span className={styles.weather_location}>{weatherDetails.place}</span>
-    </div>
+      <div></div>
+      {weatherModalView ? (
+        <div className={styles.weather_modal_container}>
+          <p className={styles.place}>{weatherDetails.place}</p>
+          <div className={styles.coords}>
+            <p>Lat: {weatherDetails.coordinates_latitude} &#176;</p>
+            <p>Lon: {weatherDetails.coordinates_longitude} &#176;</p>
+          </div>
+          <p className={styles.condition}>{weatherDetails.condition}</p>
+          <div className={styles.weather_temperature_icon}>
+            <img
+              src={`${weatherImageUrl}/${weatherDetails.weatherIcon}.png`}
+              alt="weather-logo"
+              className={styles.weather_image}
+            />
+            <p>{weatherDetails.temperature}&#176;C</p>
+          </div>
+          <p className={styles.temperature_details}>
+            Min temp: {weatherDetails.minimum_temperature}&#176;C
+          </p>
+          <p className={styles.temperature_details}>
+            Max temp: {weatherDetails.maximum_temperature}&#176;C
+          </p>
+          <p className={styles.temperature_details}>
+            Feels Like: {weatherDetails.feelsLike}&#176;C
+          </p>
+        </div>
+      ) : null}
+    </>
   );
 };
 export { WeatherInfo };
