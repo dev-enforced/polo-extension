@@ -7,7 +7,16 @@
   font-weight: 700;
   padding: 10rem 0;
 }
-
+.quote_container {
+  margin: 1rem;
+  position: absolute;
+  bottom: 3.5rem;
+}
+.settings_container {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
 @media screen and (min-width: 480px) {
   .dashboard_page_container {
     height: 100vh;
