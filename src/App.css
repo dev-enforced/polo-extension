@@ -14,8 +14,8 @@
   background-size: cover;
 }
 
-@media screen and (max-width:768px){
-  .app{
+@media screen and (max-width: 768px) {
+  .app {
     height: fit-content;
   }
 }

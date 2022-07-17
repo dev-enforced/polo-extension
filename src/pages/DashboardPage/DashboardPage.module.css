@@ -17,6 +17,10 @@
   bottom: 20px;
   left: 20px;
 }
+.date_time_container {
+  font: size 1.875rem;
+  line-height: 2rem;
+}
 @media screen and (min-width: 480px) {
   .dashboard_page_container {
     height: 100vh;
