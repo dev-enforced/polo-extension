@@ -1,4 +1,10 @@
-import { GetTimeAndDate, Quotes, Settings, WeatherInfo } from "components";
+import {
+  GetFocus,
+  GetTimeAndDate,
+  Quotes,
+  Settings,
+  WeatherInfo,
+} from "components";
 import React from "react";
 import styles from "./DashboardPage.module.css";
 const DashboardPage = () => {
@@ -9,6 +15,9 @@ const DashboardPage = () => {
       </span>
       <span className={styles.date_time_container}>
         <GetTimeAndDate />
+      </span>
+      <span>
+        <GetFocus />
       </span>
       <span className={styles.quote_container}>
         <Quotes />
