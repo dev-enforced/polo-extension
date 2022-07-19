@@ -21,6 +21,10 @@
   outline-offset: 2px;
 }
 
+.goal_input::placeholder{
+  color:#fff;
+}
+
 .current_goal_container {
   display: flex;
   font-size: 2rem;
@@ -72,6 +76,10 @@
   align-self: flex-end;
   gap: 2rem;
   margin-bottom: 0.3rem;
+}
+
+.completed_goal{
+  text-decoration: line-through;
 }
 
 @media screen and (min-width: 670px) {

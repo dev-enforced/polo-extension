@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import { MainGoalState } from "types";
 import styles from "./GetFocus.module.css";
 const GetFocus = () => {
@@ -45,12 +45,6 @@ const GetFocus = () => {
       edit_status: true,
       completion_status: false,
     }));
-    localStorage.setItem(
-      "currentTaskState",
-      JSON.stringify({
-        ...mainGoal,
-      })
-    );
   };
   const deleteCurrentGoal = () => {
     updateMainGoal(defaultGoalState);
@@ -61,14 +55,16 @@ const GetFocus = () => {
       ...prev,
       completion_status: !prev.completion_status,
     }));
+  };
+
+  useEffect(() => {
     localStorage.setItem(
       "currentTaskState",
       JSON.stringify({
         ...mainGoal,
       })
     );
-  };
-
+  }, [mainGoal]);
   return (
     <>
       {mainGoal.title !== "" && !mainGoal.edit_status ? (
@@ -78,16 +74,14 @@ const GetFocus = () => {
               type="checkbox"
               id="checkbox"
               className={styles.goal_completion_check}
+              checked={mainGoal.completion_status}
               onChange={updateGoalStatus}
             />
             <label
-              style={{
-                textDecoration: `${
-                  mainGoal.completion_status ? "line-through" : ""
-                }`,
-              }}
               htmlFor="checkbox"
-              className={styles.current_goal_title}
+              className={`${styles.current_goal_title} ${
+                mainGoal.completion_status ? styles.completed_goal : ""
+              }`}
             >
               {mainGoal.title}
             </label>
