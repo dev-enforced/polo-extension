@@ -21,8 +21,8 @@
   outline-offset: 2px;
 }
 
-.goal_input::placeholder{
-  color:#fff;
+.goal_input::placeholder {
+  color: #fff;
 }
 
 .current_goal_container {
@@ -76,9 +76,10 @@
   align-self: flex-end;
   gap: 2rem;
   margin-bottom: 0.3rem;
+  cursor: pointer;
 }
 
-.completed_goal{
+.completed_goal {
   text-decoration: line-through;
 }
 
