@@ -72,7 +72,7 @@
   transform-origin: bottom left;
 }
 .goal_action_icons {
-  font-size: 1rem;
+  font-size: 1.3rem;
   align-self: flex-end;
   gap: 2rem;
   margin-bottom: 0.3rem;
