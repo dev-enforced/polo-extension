@@ -36,17 +36,6 @@
   font-weight: 700;
 }
 
-@media screen and (min-width: 480px) {
-  .weather_location {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-  }
-  .weather_temperature_txt {
-    font-size: 1.875rem;
-    line-height: 2.25rem;
-  }
-}
-
 /* Weather modal view */
 .weather_modal_container {
   display: flex;
@@ -91,8 +80,27 @@
   align-self: flex-start;
 }
 
-@media screen and (max-width:480px) {
-.weather_modal_container{
-  width: auto;
-}  
+@media screen and (min-width: 480px) {
+  .weather_location {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+  .weather_temperature_txt {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .weather_modal_container {
+    width: auto;
+    background-color: rgba(0, 0, 0, 1);
+    z-index: 12;
+  }
+}
+@media screen and (max-width: 768px) {
+  .weather_modal_container {
+    background-color: rgba(0, 0, 0, 1);
+    z-index: 12;
+  }
 }
