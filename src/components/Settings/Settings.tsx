@@ -13,7 +13,7 @@ const Settings = () => {
   const { setUsername } = useBrowser();
   return (
     <>
-      <span className="material-icons-outlined" onClick={toggleOptionView}>
+      <span className={`material-icons-outlined ${styles.cursor_pointer}`} onClick={toggleOptionView}>
         settings
       </span>
       {optionView ? (
