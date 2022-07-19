@@ -121,7 +121,6 @@ const GetFocus = () => {
             }}
             autoComplete="off"
             autoFocus
-            required
           />
         </form>
       )}
