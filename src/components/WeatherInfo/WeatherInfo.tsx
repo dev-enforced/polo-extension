@@ -13,8 +13,8 @@ const WeatherInfo = () => {
   const weatherImageUrl = process.env.REACT_APP_WEATHER_IMAGE_URL;
 
   const getAndSetWeatherDetails = async (
-    latitudeGiven: any,
-    longitudeGiven: any
+    latitudeGiven: number,
+    longitudeGiven: number
   ) => {
     let updatedApiUrl = "";
     if (latitudeGiven && longitudeGiven) {
@@ -52,7 +52,7 @@ const WeatherInfo = () => {
       console.error("An error occured while receiving the weather details");
     }
   };
-  const locationCallback = async (position: any) => {
+  const locationCallback = async (position: GeolocationPosition) => {
     const { latitude: currentLatitude, longitude: currentLongitude } =
       position.coords;
     getAndSetWeatherDetails(currentLatitude, currentLongitude);
