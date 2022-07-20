@@ -16,7 +16,7 @@ const UserOnboardingPage = () => {
       keyEvent.target.value.trim() !== ""
     ) {
       const keyEventValueCapitalised = capitaliseUsername(
-        keyEvent.target.value
+        keyEvent.target.value.trim()
       );
       setUsername(keyEventValueCapitalised);
       localStorage.setItem("individual_name", keyEventValueCapitalised);
