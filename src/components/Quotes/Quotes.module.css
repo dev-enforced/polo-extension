@@ -1,0 +1,11 @@
+.quote_text {
+  font-weight: 400;
+  font-family: "Harmattan", sans-serif;
+}
+
+@media screen and (min-width: 670px) {
+  .quote_text {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+}

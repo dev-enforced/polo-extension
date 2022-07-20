@@ -1,0 +1,38 @@
+.dashboard_page_container {
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+  text-align: center;
+  color: rgba(255, 255, 255, 1);
+  font-weight: 700;
+  padding: 10rem 0;
+}
+.quote_container {
+  margin: 1rem;
+  position: absolute;
+  bottom: 3.5rem;
+}
+.settings_container {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+.date_time_container {
+  font: size 1.875rem;
+  line-height: 2rem;
+}
+@media screen and (min-width: 480px) {
+  .dashboard_page_container {
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+  }
+}
+/* SOLUTION TO THE ISSUE OF RESIZING THE APP on smaller screens through the white spaces
+ Fix to the resizing issue I should allocate styles to the body through the index.css file 
+ 
+ body{
+  background-size:cover
+  background-image:url(link);
+ }
+ */
