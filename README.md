@@ -43,3 +43,5 @@ Create an .env file after the above installation in which these variables shall 
 
 - React JS and Typescript
 - CSS Modules
+
+**NOTE**: Instructions for running it as a browser extension will be added soon.
