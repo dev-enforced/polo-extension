@@ -2,7 +2,7 @@
   <img src="public/logo192.png" height="100" width="100" alt="logo"/>
   
 # ***Polo Extension***
-A Browser extension for a beautifully simple start page.
+A Browser Extension which enables the users to develop a productive outlook towards day to day activities. Can be used through desktop based browsers.
 </div>
 
 ## Installation
