@@ -1,4 +1,5 @@
-import React, { FormEvent, useEffect, useState } from "react";
+import React, { FormEvent } from "react";
+import { useBrowser } from "context";
 import { MainGoalState } from "types";
 import styles from "./GetFocus.module.css";
 const GetFocus = () => {
@@ -7,14 +8,8 @@ const GetFocus = () => {
     title: "",
     edit_status: false,
   };
+  const { mainGoal, updateMainGoal } = useBrowser();
 
-  const [mainGoal, updateMainGoal] = useState<MainGoalState>(() => {
-    if (localStorage.getItem("currentTaskState") !== null) {
-      return JSON.parse(localStorage.getItem("currentTaskState") || "");
-    } else {
-      return defaultGoalState;
-    }
-  });
   const submitHandler = (submitEvent: FormEvent) => {
     submitEvent.preventDefault();
   };
@@ -57,14 +52,6 @@ const GetFocus = () => {
     }));
   };
 
-  useEffect(() => {
-    localStorage.setItem(
-      "currentTaskState",
-      JSON.stringify({
-        ...mainGoal,
-      })
-    );
-  }, [mainGoal]);
   return (
     <>
       {mainGoal.title !== "" && !mainGoal.edit_status ? (

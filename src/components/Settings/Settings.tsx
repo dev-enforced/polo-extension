@@ -9,11 +9,18 @@ const Settings = () => {
   const resetName = () => {
     localStorage.setItem("individual_name", "");
     setUsername("");
+    resetTask();
   };
-  const { setUsername } = useBrowser();
+  const { setUsername, updateMainGoal, defaultGoalState } = useBrowser();
+  const resetTask = () => {
+    updateMainGoal(defaultGoalState);
+  };
   return (
     <>
-      <span className={`material-icons-outlined ${styles.cursor_pointer}`} onClick={toggleOptionView}>
+      <span
+        className={`material-icons-outlined ${styles.cursor_pointer}`}
+        onClick={toggleOptionView}
+      >
         settings
       </span>
       {optionView ? (
