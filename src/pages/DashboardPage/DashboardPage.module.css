@@ -28,3 +28,11 @@
     justify-content: center;
   }
 }
+/* SOLUTION TO THE ISSUE OF RESIZING THE APP on smaller screens through the white spaces
+ Fix to the resizing issue I should allocate styles to the body through the index.css file 
+ 
+ body{
+  background-size:cover
+  background-image:url(link);
+ }
+ */
