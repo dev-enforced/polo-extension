@@ -7,6 +7,8 @@ const getPeriodOfTheDay = (hoursInput: number) => {
     return `Good Afternoon`;
   } else if (hoursInput >= 18 && hoursInput < 23) {
     return `Good Evening`;
+  }else{
+    return `Function not working correctly`
   }
 };
 export { getPeriodOfTheDay };

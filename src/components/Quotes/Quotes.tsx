@@ -1,15 +1,14 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
+import { getDesiredQuotes } from "services";
 import styles from "./Quotes.module.css";
 const Quotes = () => {
   const [quoteDisplayed, updateQuoteDisplayed] = useState<string>("");
   const getQuotes = async () => {
-    const { data: quotesList } = await axios.get(
-      `${process.env.REACT_APP_QUOTE_API_URL}`
-    );
+    const quotesList = await getDesiredQuotes();
     const randomNum = Math.floor(Math.random() * 200 - 1);
-    const newQuote = `${quotesList[randomNum].text} - ${quotesList[randomNum].author}`;
-    updateQuoteDisplayed(newQuote);
+    const { text: quoteText, author: quoteAuthor } = quotesList[randomNum];
+    const quoteToBeDisplayed = `${quoteText} - ${quoteAuthor}`;
+    updateQuoteDisplayed(quoteToBeDisplayed as string);
   };
   useEffect(() => {
     getQuotes();

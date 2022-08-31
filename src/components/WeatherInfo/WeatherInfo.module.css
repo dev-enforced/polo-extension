@@ -104,3 +104,35 @@
     z-index: 12;
   }
 }
+
+/* Skeleton Loader */
+.skeleton {
+  background-color: rgba(244, 245, 247, 0.2);
+}
+
+.empty_text {
+  width: 35px;
+  height: 5px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 1);
+  margin: 15px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20%;
+  height: 100%;
+  background-color: rgba(201, 213, 231, 0.6);
+  box-shadow: 0px 0px 2px 3px rgba(256, 256, 256, 0.1);
+  animation: slider 1.2s infinite;
+}
+@keyframes slider {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(400%);
+  }
+}
