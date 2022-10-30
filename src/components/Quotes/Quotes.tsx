@@ -4,7 +4,8 @@ import styles from "./Quotes.module.css";
 const Quotes = () => {
   const [quoteDisplayed, updateQuoteDisplayed] = useState<string>("");
   const getQuotes = async () => {
-    const quotesList = await getDesiredQuotes();
+    const responseObj = await getDesiredQuotes();
+    const { data: quotesList } = responseObj;
     const randomNum = Math.floor(Math.random() * 200 - 1);
     const { text: quoteText, author: quoteAuthor } = quotesList[randomNum];
     const quoteToBeDisplayed = `${quoteText} - ${quoteAuthor}`;
