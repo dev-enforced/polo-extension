@@ -8,6 +8,7 @@ const WeatherInfo = () => {
     weatherInfoInitialState
   );
   const [weatherModalView, setWeatherModalView] = useState<boolean>(false);
+  const [loaderView, setLoaderView] = useState<boolean>(true);
   const weatherApiKey = process.env.REACT_APP_WEATHER_API_KEY;
   const weatherApiUrl = process.env.REACT_APP_WEATHER_API_URL;
   const weatherImageUrl = process.env.REACT_APP_WEATHER_IMAGE_URL;
@@ -48,6 +49,7 @@ const WeatherInfo = () => {
         condition: weather[0].main,
         weatherIcon: weather[0].icon,
       }));
+      setLoaderView(false);
     } catch (errorReceived) {
       console.error("An error occured while receiving the weather details");
     }
@@ -55,10 +57,12 @@ const WeatherInfo = () => {
   const locationCallback = async (position: GeolocationPosition) => {
     const { latitude: currentLatitude, longitude: currentLongitude } =
       position.coords;
-    getAndSetWeatherDetails(currentLatitude, currentLongitude);
+    setTimeout(() => {
+      getAndSetWeatherDetails(currentLatitude, currentLongitude);
+    }, 2000);
   };
   const receiveGeoLocation = () => {
-    navigator.geolocation.getCurrentPosition(locationCallback);
+    navigator.geolocation?.getCurrentPosition(locationCallback);
   };
   const toggleModalView = () => {
     setWeatherModalView((prev) => !prev);
@@ -69,55 +73,67 @@ const WeatherInfo = () => {
   }, []);
   return (
     <>
-      <div
-        className={styles.weather_info_container}
-        onClick={() => {
-          toggleModalView();
-        }}
-      >
-        <div className={styles.weather_info_with_temperature_container}>
-          <div className={styles.weather_temperature}>
-            <img
-              src={`${weatherImageUrl}/${weatherDetails.weatherIcon}@2x.png`}
-              alt="weather-logo"
-              className={styles.weather_icon}
-            />
-            <div className={styles.weather_temperature_txt}>
-              <span>{weatherDetails.temperature}</span>
-              <span>&#176;</span>
+      {!loaderView ? (
+        <>
+          <div
+            className={styles.weather_info_container}
+            onClick={() => {
+              toggleModalView();
+            }}
+          >
+            <div className={styles.weather_info_with_temperature_container}>
+              <div className={styles.weather_temperature}>
+                <img
+                  src={`${weatherImageUrl}/${weatherDetails.weatherIcon}@2x.png`}
+                  alt="weather-logo"
+                  className={styles.weather_icon}
+                />
+                <div className={styles.weather_temperature_txt}>
+                  <span>{weatherDetails.temperature}</span>
+                  <span>&#176;</span>
+                </div>
+              </div>
             </div>
+            <span className={styles.weather_location}>
+              {weatherDetails.place}
+            </span>
           </div>
+          <div></div>
+          {weatherModalView ? (
+            <div className={styles.weather_modal_container}>
+              <p className={styles.place}>{weatherDetails.place}</p>
+              <div className={styles.coords}>
+                <p>Lat: {weatherDetails.coordinates_latitude} &#176;</p>
+                <p>Lon: {weatherDetails.coordinates_longitude} &#176;</p>
+              </div>
+              <p className={styles.condition}>{weatherDetails.condition}</p>
+              <div className={styles.weather_temperature_icon}>
+                <img
+                  src={`${weatherImageUrl}/${weatherDetails.weatherIcon}.png`}
+                  alt="weather-logo"
+                  className={styles.weather_image}
+                />
+                <p>{weatherDetails.temperature}&#176;C</p>
+              </div>
+              <p className={styles.temperature_details}>
+                Min temp: {weatherDetails.minimum_temperature}&#176;C
+              </p>
+              <p className={styles.temperature_details}>
+                Max temp: {weatherDetails.maximum_temperature}&#176;C
+              </p>
+              <p className={styles.temperature_details}>
+                Feels Like: {weatherDetails.feelsLike}&#176;C
+              </p>
+            </div>
+          ) : null}
+        </>
+      ) : (
+        <div className={`${styles.weather_info_container} ${styles.skeleton}`}>
+          <div className={`${styles.empty_text}`}></div>
+          <div className={`${styles.empty_text}`}></div>
+          <div className={styles.overlay}></div>
         </div>
-        <span className={styles.weather_location}>{weatherDetails.place}</span>
-      </div>
-      <div></div>
-      {weatherModalView ? (
-        <div className={styles.weather_modal_container}>
-          <p className={styles.place}>{weatherDetails.place}</p>
-          <div className={styles.coords}>
-            <p>Lat: {weatherDetails.coordinates_latitude} &#176;</p>
-            <p>Lon: {weatherDetails.coordinates_longitude} &#176;</p>
-          </div>
-          <p className={styles.condition}>{weatherDetails.condition}</p>
-          <div className={styles.weather_temperature_icon}>
-            <img
-              src={`${weatherImageUrl}/${weatherDetails.weatherIcon}.png`}
-              alt="weather-logo"
-              className={styles.weather_image}
-            />
-            <p>{weatherDetails.temperature}&#176;C</p>
-          </div>
-          <p className={styles.temperature_details}>
-            Min temp: {weatherDetails.minimum_temperature}&#176;C
-          </p>
-          <p className={styles.temperature_details}>
-            Max temp: {weatherDetails.maximum_temperature}&#176;C
-          </p>
-          <p className={styles.temperature_details}>
-            Feels Like: {weatherDetails.feelsLike}&#176;C
-          </p>
-        </div>
-      ) : null}
+      )}
     </>
   );
 };

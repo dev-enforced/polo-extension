@@ -54,23 +54,23 @@ const GetFocus = () => {
 
   return (
     <>
-      {mainGoal.title !== "" && !mainGoal.edit_status ? (
+      {mainGoal?.title !== "" && !mainGoal?.edit_status ? (
         <div className={styles.current_goal_container}>
           <div className={styles.current_goal_input_container}>
             <input
               type="checkbox"
               id="checkbox"
               className={styles.goal_completion_check}
-              checked={mainGoal.completion_status}
+              checked={mainGoal?.completion_status}
               onChange={updateGoalStatus}
             />
             <label
               htmlFor="checkbox"
               className={`${styles.current_goal_title} ${
-                mainGoal.completion_status ? styles.completed_goal : ""
+                mainGoal?.completion_status ? styles.completed_goal : ""
               }`}
             >
-              {mainGoal.title}
+              {mainGoal?.title}
             </label>
           </div>
           <div>
@@ -97,7 +97,7 @@ const GetFocus = () => {
             type="text"
             className={styles.goal_input}
             placeholder="Press enter after providing goal"
-            value={mainGoal.title}
+            value={mainGoal?.title}
             onKeyPress={receiveGoal}
             onChange={(e) => {
               updateMainGoal((prev) => ({
